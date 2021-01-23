@@ -8,7 +8,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE=d2att \
     PRIVATE_BUILD_DESC="d2uc-user 4.4.2 KOT49H I747UCUFNJ2 release-keys"
     
-BUILD_FINGERPRINT := samsung/lineage_d2att/d2att:9/I747UCUFNJ2/alexenferman:userdebug/release-keys
+BUILD_FINGERPRINT := samsung/lineage_d2att/d2att:9/I747UCUFNJ2/lineage:userdebug/release-keys
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_NAME := lineage_d2att
