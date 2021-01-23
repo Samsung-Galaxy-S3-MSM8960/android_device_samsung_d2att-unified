@@ -2,6 +2,8 @@ Copyright 2012 - The CyanogenMod Project
 
 Copyright 2017 - The LineageOS Project
 
+Copyright 2021 - Alexenferman
+
 Device configuration for Galaxy S3 (Qualcomm Variants)
 =====================================
 
