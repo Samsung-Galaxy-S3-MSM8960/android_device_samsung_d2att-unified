@@ -23,4 +23,4 @@ Camera  | 8 MP, 3264 x 2448 pixels
 Release Date | July 2012
 
 
-![Galaxy S3](http://i.imgur.com/D0sgNuG.png "Galaxy S3")
+![Galaxy S3](https://i.postimg.cc/XYkPnDb9/SGS3.png "Galaxy S3")
