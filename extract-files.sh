@@ -49,7 +49,7 @@ else
 fi
 
 # Initialize the helper for common device
-setup_vendor "$PLATFORM_COMMON" "$VENDOR" "$CM_ROOT" true
+setup_vendor "$BOARD_COMMON" "$VENDOR" "$CM_ROOT" true
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC"
 

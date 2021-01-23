@@ -29,7 +29,7 @@ LOCAL_PATH := device/samsung/d2att
 
 # Architecture
 TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv8-a
+TARGET_ARCH_VARIANT := armv7-a
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
@@ -51,9 +51,14 @@ BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01500000
 BOARD_KERNEL_PAGESIZE := 2048
+LZMA_RAMDISK_TARGETS := recovery
 TARGET_KERNEL_SOURCE := kernel/samsung/d2
 TARGET_KERNEL_CONFIG := lineageos_d2_defconfig
 BOARD_KERNEL_IMAGE_NAME := zImage
+
+# Kernel Toolchain
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
@@ -62,7 +67,8 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 13140754432
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 880803840
-TARGET_RECOVERY_FSTAB := device/samsung/d2-common/rootdir/etc/fstab.qcom
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := $(LOCAL_PATH)/recovery/recovery_keys.c
+TARGET_RECOVERY_FSTAB	:= $(LOCAL_PATH)/recovery/recovery.fstab
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -76,8 +82,8 @@ USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/d2-common/bluetooth
-BOARD_CUSTOM_BT_CONFIG := device/samsung/d2-common/bluetooth/vnd_d2.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/d2att/bluetooth
+BOARD_CUSTOM_BT_CONFIG := device/samsung/d2att/bluetooth/vnd_d2.txt
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 
@@ -86,7 +92,7 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/samsung/d2-common/ril
+BOARD_RIL_CLASS := ../../../device/samsung/d2att/ril
 
 # Wifi
 BOARD_WLAN_DEVICE := bcmdhd
@@ -115,7 +121,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # CMHW
-BOARD_HARDWARE_CLASS += device/samsung/msm8960-common/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/d2att/cmhw
 
 # Display
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
@@ -127,7 +133,7 @@ TARGET_NO_ADAPTIVE_PLAYBACK := true
 EXTENDED_FONT_FOOTPRINT := true
 
 # Includes
-TARGET_SPECIFIC_HEADER_PATH += device/samsung/msm8960-common/include
+TARGET_SPECIFIC_HEADER_PATH += device/samsung/d2att/include
 
 # Radio
 BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
@@ -140,8 +146,30 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 
+# Recovery - TWRP
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_THEME := portrait_hdpi
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+DEVICE_RESOLUTION := 720x1280
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+RECOVERY_SDCARD_ON_DATA := true
+TW_INCLUDE_NTFS_3G := true
+TW_HAS_MTP := true
+TW_MTP_DEVICE := /dev/mtp_usb
+TW_NO_USB_STORAGE := true
+TW_MAX_BRIGHTNESS := 255
+TW_NO_REBOOT_BOOTLOADER := true
+TW_HAS_DOWNLOAD_MODE := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_EXCLUDE_SUPERSU := true
+TW_OVERRIDE_SYSTEM_PROPS := "ro.build.fingerprint;ro.build.version.incremental"
+TW_USE_TOOLBOX := true
+TW_EXCLUDE_TWRPAPP := true
+TW_INCLUDE_CRYPTO := true
+TW_EXTRA_LANGUAGES := false
+
 # SDClang
-TARGET_USE_SDCLANG := true
+TARGET_USE_SDCLANG := false
 
 # SELinux
 #include device/qcom/sepolicy/sepolicy.mk

@@ -18,6 +18,10 @@
 
 set -e
 
+export DEVICE=d2att
+export DEVICE_COMMON=d2-common
+export BOARD_COMMON=msm8960-common
+export VENDOR=samsung
 export INITIAL_COPYRIGHT_YEAR=2012
 export MSM8960_DEVICE_LIST="apexqtmo comanche d2att d2bst d2cri d2csp d2mtr d2refreshspr d2spr d2tmo d2usc d2vzw espressovzw expressatt"
 export D2_DEVICE_LIST="d2att d2bst d2cri d2csp d2mtr d2refreshspr d2spr d2tmo d2usc d2vzw"
@@ -38,7 +42,7 @@ fi
 . "$HELPER"
 
 # Initialize the helper for common platform
-setup_vendor "$PLATFORM_COMMON" "$VENDOR" "$CM_ROOT" true
+setup_vendor "$BOARD_COMMON" "$VENDOR" "$CM_ROOT" true
 
 # Copyright headers and common guards for msm8960-common
 write_headers "$MSM8960_DEVICE_LIST"

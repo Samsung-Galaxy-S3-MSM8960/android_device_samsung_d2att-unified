@@ -15,9 +15,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_d2att.mk
-    
-COMMON_LUNCH_CHOICES := \
-    lineage_d2att-user \
-    lineage_d2att-userdebug \
-    lineage_d2att-eng
+    $(LOCAL_DIR)/lineage_d2att.mk \
+    $(LOCAL_DIR)/omni_d2att.mk

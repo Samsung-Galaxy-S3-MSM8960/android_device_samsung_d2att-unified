@@ -15,7 +15,7 @@ GPU     | Adreno 225
 Memory  | 2GB RAM
 Shipped Android Version | 4.4.2
 Storage | 16/32GB
-MicroSD | Up to 64GB
+MicroSD | Up to 128 GB
 Battery | 2100 mAh
 Dimensions | 136.6 x 70.6 x 8.6 mm
 Display | 720 x 1080 pixels, Super AMOLED
@@ -24,3 +24,11 @@ Release Date | July 2012
 
 
 ![Galaxy S3](https://i.postimg.cc/XYkPnDb9/SGS3.png "Galaxy S3")
+
+TWRP branch
+This tree is to be built on omni 8.1
+Vendor tree - https://github.com/palmbeach05/android_vendor_samsung
+Vendor tree branch - lineage-16.0
+
+Current status - Stable, working
+Bugs - MTP and ADB currently not working on 8.1 based build
