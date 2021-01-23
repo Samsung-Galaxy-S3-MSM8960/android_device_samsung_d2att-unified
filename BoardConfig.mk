@@ -1,6 +1,7 @@
 #
 # Copyright (C) 2014 The CyanogenMod Project
 # Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2021 Alexenferman
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,37 +23,34 @@
 # definition file).
 #
 
-# inherit from common msm8960
--include device/samsung/msm8960-common/BoardConfigCommon.mk
+# inherit from qcom-common
+-include device/samsung/qcom-common/BoardConfigCommon.mk
 
-# inherit from the proprietary version
--include vendor/samsung/d2att/BoardConfigVendor.mk
+# Architecture
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT := krait
+
+# Platform
+TARGET_BOARD_PLATFORM := msm8960
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := d2att,d2lte,d2can,d2tmo
-
-TARGET_SPECIFIC_HEADER_PATH += device/samsung/d2-common/include
+TARGET_SPECIFIC_HEADER_PATH += device/samsung/d2att/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
 # Kernel
-TARGET_KERNEL_CONFIG        := lineageos_d2_defconfig
-
-# Audio
-BOARD_HAVE_AUDIENCE_A2220 := true
-BOARD_HAVE_SAMSUNG_CSDCLIENT := true
-USE_CUSTOM_AUDIO_POLICY := 1
-
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/d2-common/bluetooth
-BOARD_CUSTOM_BT_CONFIG := device/samsung/d2-common/bluetooth/vnd_d2.txt
-BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_HAVE_SAMSUNG_BLUETOOTH := true
-
-# GPS
-TARGET_NO_RPC := true
-USE_DEVICE_SPECIFIC_GPS := true
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache
+BOARD_KERNEL_BASE := 0x80200000
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01500000
+BOARD_KERNEL_PAGESIZE := 2048
+TARGET_KERNEL_SOURCE := kernel/samsung/d2
+TARGET_KERNEL_CONFIG := lineageos_d2_defconfig
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
@@ -63,6 +61,25 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 880803840
 TARGET_RECOVERY_FSTAB := device/samsung/d2-common/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_FLASH_BLOCK_SIZE := 131072
+
+# Audio
+BOARD_USES_ALSA_AUDIO := true
+BOARD_HAVE_AUDIENCE_A2220 := true
+BOARD_HAVE_SAMSUNG_CSDCLIENT := true
+USE_CUSTOM_AUDIO_POLICY := 1
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/d2-common/bluetooth
+BOARD_CUSTOM_BT_CONFIG := device/samsung/d2-common/bluetooth/vnd_d2.txt
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_HAVE_SAMSUNG_BLUETOOTH := true
+
+# GPS
+TARGET_NO_RPC := true
+USE_DEVICE_SPECIFIC_GPS := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../device/samsung/d2-common/ril
@@ -78,29 +95,6 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/system/etc/wifi/bcmdhd_sta.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/system/etc/wifi/bcmdhd_apsta.bin"
-
-# inherit from qcom-common
--include device/samsung/qcom-common/BoardConfigCommon.mk
-
-# Platform
-TARGET_BOARD_PLATFORM := msm8960
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
-
-# Architecture
-TARGET_CPU_VARIANT := krait
-
-# Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 zcache
-BOARD_KERNEL_BASE := 0x80200000
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01500000
-BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_SOURCE := kernel/samsung/d2
-
-# Audio
-BOARD_USES_ALSA_AUDIO := true
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH := true
 
 # Camera
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
@@ -131,13 +125,6 @@ EXTENDED_FONT_FOOTPRINT := true
 # Includes
 TARGET_SPECIFIC_HEADER_PATH += device/samsung/msm8960-common/include
 
-# Build our own PowerHAL
-TARGET_POWERHAL_VARIANT :=
-
-# Partitions
-TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_FLASH_BLOCK_SIZE := 131072
-
 # Radio
 BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
 
@@ -154,7 +141,7 @@ TARGET_USE_SDCLANG := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += device/samsung/msm8960-common/sepolicy
+BOARD_SEPOLICY_DIRS += device/samsung/d2att/sepolicy
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
