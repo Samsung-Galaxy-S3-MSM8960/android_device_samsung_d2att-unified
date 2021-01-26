@@ -269,7 +269,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsamsung_symbols
 
-Stlport
+# Stlport
 PRODUCT_PACKAGES += \
     libstlport
 
