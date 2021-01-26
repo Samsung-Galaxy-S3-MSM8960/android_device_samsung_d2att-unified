@@ -269,9 +269,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libsamsung_symbols
 
-# Stlport
-#PRODUCT_PACKAGES += \
-#    libstlport
+Stlport
+PRODUCT_PACKAGES += \
+    libstlport
 
 # ART
 PRODUCT_PROPERTY_OVERRIDES += \
