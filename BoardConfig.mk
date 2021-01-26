@@ -29,7 +29,7 @@ LOCAL_PATH := device/samsung/d2att
 
 # Architecture
 TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv8-a
+TARGET_ARCH_VARIANT := armv7-a
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
@@ -62,7 +62,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1572864000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 13140754432
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 880803840
-TARGET_RECOVERY_FSTAB := device/samsung/d2-common/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := device/samsung/d2att/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -76,8 +76,8 @@ USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/d2-common/bluetooth
-BOARD_CUSTOM_BT_CONFIG := device/samsung/d2-common/bluetooth/vnd_d2.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/d2att/bluetooth
+BOARD_CUSTOM_BT_CONFIG := device/samsung/d2att/bluetooth/vnd_d2.txt
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_HAVE_SAMSUNG_BLUETOOTH := true
 
@@ -86,7 +86,7 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # RIL
-BOARD_RIL_CLASS := ../../../device/samsung/d2-common/ril
+BOARD_RIL_CLASS := ../../../device/samsung/d2att/ril
 
 # Wifi
 BOARD_WLAN_DEVICE := bcmdhd
@@ -115,7 +115,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # CMHW
-BOARD_HARDWARE_CLASS += device/samsung/msm8960-common/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/d2att/cmhw
 
 # Display
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
@@ -127,7 +127,7 @@ TARGET_NO_ADAPTIVE_PLAYBACK := true
 EXTENDED_FONT_FOOTPRINT := true
 
 # Includes
-TARGET_SPECIFIC_HEADER_PATH += device/samsung/msm8960-common/include
+TARGET_SPECIFIC_HEADER_PATH += device/samsung/d2att/include
 
 # Radio
 BOARD_GLOBAL_CFLAGS += -DDISABLE_ASHMEM_TRACKING
