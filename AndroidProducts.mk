@@ -15,7 +15,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/dot_d2att.mk
+    $(LOCAL_DIR)/dot.mk
     
 COMMON_LUNCH_CHOICES := \
     dot_d2att-user \
