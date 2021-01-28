@@ -253,8 +253,12 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # Power
+#PRODUCT_PACKAGES += \
+#    power.msm8960
+	
+# Power
 PRODUCT_PACKAGES += \
-    power.msm8960
+    android.hardware.power@1.0-service-qti
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -264,6 +268,17 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     ueventd.qcom.rc
+	
+# DRM HIDL interfaces
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl \
+    android.hardware.drm@1.0-service
+
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0 \
+    android.hidl.manager@1.0-java
 
 # Samsung symbols
 PRODUCT_PACKAGES += \
