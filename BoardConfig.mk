@@ -180,3 +180,11 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 
+# Bionic
+TARGET_ALLOWS_INVALID_PTHREAD := true
+
+# GCC
+TARGET_NEEDS_GCC_LIBC := true
+
+# HIDL
+DEVICE_MATRIX_FILE := $(PLATFORM_PATH)/compatibility_matrix.xml
